@@ -19,4 +19,4 @@ Para isto iremos alterar a estrutura usada para armazenar os valores da tarefa e
 - Exportar tarefas por prioridade: seu programa deve gerar um arquivo texto listando apenas as tarefas da prioridade escolhida pelo usuário. Cada tarefa deve estar em uma linha do arquivo na sequência: prioridade, categoria, estado e descrição;
 - Exportar tarefas por categoria: idem ao anterior, inclusive no formato do arquivo exportado, sendo que as tarefas devem estar ordenadas por prioridade;
 - Exportar tarefas por prioridade e categoria: junção dos filtros anteriores, mantendo o formato do arquivo que deve ser exportado.
--> Além destas, iremos alterar as funções que já foram implementadas para aceitar o armazenamento do estado da tarefa.
+- Além destas, iremos alterar as funções que já foram implementadas para aceitar o armazenamento do estado da tarefa.
