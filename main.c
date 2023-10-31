@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcoes.h"
-// Grupo ->
+
 // Nome: Marjorie Luize Martins Costa
 // RA: 242230845
-// Nome: Antonio Roth Gorham
-// RA: 241230788
+
 
 int main(){
 
