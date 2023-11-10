@@ -10,6 +10,7 @@ int main(){
 
     int cod;
     char arquivo[] = "tarefas";
+    char exportado[] = "-";
     ListaDeTarefas lt;
 
     cod = carregarLista(&lt, arquivo);
@@ -33,19 +34,56 @@ int main(){
             system("clear");
         } else if (opcao == 3){
             system("clear");
-            listarTarefa(lt);
-            
+            void menuListagem();
+            int opcao2;
+            scanf("%d", &opcao2);
+            system("clear");
+            if(opcao2 == 1){
+              listarTarefas(lt);
+            } else if (opcao2 == 2){
+              listarPrioridade(lt);
+            } else if (opcao2 == 3){
+              listarCategoria(lt);
+            } else if (opcao == 4){
+              listarEstado(lt);
+            } else if (opcao == 5){
+              listarPCTarefa(lt);
+            } else {
+              printf("Opção não existe!\n");
+            }
+
             printf("Pressione Enter para voltar ao menu...");
             getchar(); // Captura o Enter
             getchar(); // Aguarda o próximo Enter
 
+            system("clear"); 
+          } else if (opcao == 4){
             system("clear");
-        } else {
+            void menuExportar();
+            int opcao3;
+            scanf("%d", &opcao3);
+            system("clear");
+
+            if (opcao3 == 1){
+              exportarTarefas(lt, exportado);
+            } else if (opcao3 == 2){
+              exportarPrioridade(lt, exportado);
+            } else if (opcao3 == 3){
+              exportarCategoria(lt, exportado);
+            } else if (opcao3 == 4){
+              exportarPCTarefa(lt, exportado);
+            } else{
+              printf("Opção não existe!\n");
+            }
+          } else if (opcao == 5){
+            system("clear");
+            alterarTarefa(&lt);
+          } else {
             printf("Opção não existe!\n");
         }
+      cod = salvarLista(lt, arquivo);
     } while (opcao != 0);
 
-    cod = salvarLista(lt, arquivo);
     if (cod != 0){
         printf("Erro ao salvar tarefas!\n");
     }
