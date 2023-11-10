@@ -3,6 +3,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Retorna o estado da tarefa
+char* estado(int e){
+  char* estado;
+  if(e == 1){
+    estado = "Completo";
+  } else if (e == 2){
+    estado = "Em andamento";
+  } else  if (e == 3){
+    estado = "Não iniciado";
+  } else {
+    printf("Erro!");
+  }
+  return estado;
+}
+
+// Altera um campo de uma tarefa escolhida
+int alterarTarefa(ListaDeTarefas *lt){
+  return 0;
+}
+
 // Cria uma nova tarefa e adiciona na lista
 int criarTarefa(ListaDeTarefas *lt) {
     if (lt->qtd < 100) {
@@ -20,9 +40,15 @@ int criarTarefa(ListaDeTarefas *lt) {
         printf("Digite a descrição (até 300 caracteres): ");
         fgets(lt->tarefas[lt->qtd].descricao, sizeof(lt->tarefas[lt->qtd].descricao), stdin);
 
-        
+
         printf("Digite a prioridade (de 1 a 10): ");
         scanf("%d", &lt->tarefas[lt->qtd].prioridade);
+      
+        printf("Escolha o estado da tarefa:\n");    
+        printf("1 - Completo\n");  
+        printf("2 - Em andamento\n");
+        printf("3 - Não iniciado\n");
+      scanf("%d", &lt->tarefas[lt->qtd].estado);
 
         lt->qtd++;
         return 0;
@@ -32,7 +58,7 @@ int criarTarefa(ListaDeTarefas *lt) {
     }
 
 }
-        
+
 
 // Deleta uma tarefa da lista
 int deletarTarefa(ListaDeTarefas *lt) {
@@ -62,11 +88,11 @@ int deletarTarefa(ListaDeTarefas *lt) {
 }
 
 // Mostra a lista de tarefas e retorna 0 se a lista não estiver vazia
-int listarTarefa(ListaDeTarefas lt) {
+int listarTarefas(ListaDeTarefas lt) {
     printf("Lista de tarefas\n");
     printf("Quantidade de tarefas: %d\n", lt.qtd);
     printf("\n");
-    
+
     if (lt.qtd == 0) {
         printf("A lista de tarefas está vazia.\n");
         return 1; 
@@ -83,14 +109,67 @@ int listarTarefa(ListaDeTarefas lt) {
     return 0; 
 }
 
-// Mostra o menu
+int listarPrioridade(ListaDeTarefas lt){
+  return 0;
+}
+
+int listarCategoria(ListaDeTarefas lt){
+  return 0;
+}
+
+int listarPCTarefa(ListaDeTarefas lt){
+  return 0;
+}
+
+int listarEstado(ListaDeTarefas lt){
+  return 0;
+}
+
+// Adicional, não feito.
+int exportarTarefas(ListaDeTarefas lt, char exportado[]){
+  return 0;
+}
+
+int exportarPrioridade(ListaDeTarefas lt, char exportado[]){
+  return 0;
+}
+
+int exportarCategoria(ListaDeTarefas lt, char exportado[]){
+  return 0;
+}
+
+int exportarPCTarefa(ListaDeTarefas lt, char exportado[]){
+  return 0;
+}
+
+// Funções para print de menus
 void printMenu(){
     printf("Menu\n");
     printf("1 - Criar tarefa\n");
     printf("2 - Deletar tarefa\n");
     printf("3 - Listar tarefas\n");
+    printf("4 - Exportar tarefas\n");
+    printf("5 - Alterar tarefa\n");
     printf("0 - Sair\n");
     printf("Digite a opção desejada: ");
+}
+
+void menuExportar(){
+  printf("Arquivo gerado em TXT\n");
+  printf("Escolha a exportação:\n");
+  printf("1 - Exportar tudo (opção indisponivel)\n");
+  printf("2 - Exportar por prioridade\n");
+  printf("3 - Exportar por categoria\n");
+  printf("4 - Exportar por prioridade e categoria\n");
+}
+  
+void menuListagem(){
+  printf("Escolha a listagem desejada:\n");
+  printf("1 - Listar todas as tarefas\n");
+  printf("2 - Listar tarefas por prioridade\n");
+  printf("3 - Listar tarefas por categoria\n");
+  printf("4 - Listar tarefas por estado\n");
+  printf("5 - Listar tarefas por prioridade e categoria\n");
 }
 
 // Salva a lista de tarefas em um arquivo
