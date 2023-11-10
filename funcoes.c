@@ -18,13 +18,8 @@ char* estado(int e){
   return estado;
 }
 
-// Altera um campo de uma tarefa escolhida
-int alterarTarefa(ListaDeTarefas *lt){
-  return 0;
-}
-
 // Cria uma nova tarefa e adiciona na lista
-int criarTarefa(ListaDeTarefas *lt) {
+int criarTarefa(ListaDeTarefas *lt){
     if (lt->qtd < 100) {
         printf("Criar tarefa:\n");
 
@@ -109,7 +104,98 @@ int listarTarefas(ListaDeTarefas lt) {
     return 0; 
 }
 
+// Altera um campo de uma tarefa escolhida
+int alterarTarefa(ListaDeTarefas *lt){
+  printf("Alterar Tarefa");
+  printf("1 - Exibir escolhas");
+  printf("2 - Já sei a posição da tarefa");
+  printf("0 - Voltar");
+  int opcao;
+  scanf("%d", &opcao);
+  if(opcao == 1){
+    system("clear");
+    listarTarefas(*lt);
+  }
+    printf("Qual tarefa você deseja alterar?");
+    int posicao;
+    scanf("%d", &posicao);
+    if(posicao > lt->qtd || posicao < 0){
+      printf("Posição inválida!");
+      return 0;
+    } else {
+      system("clear");
+      printf("Qual campo você deseja alterar?");
+      printf("1 - Descrição");
+      printf("2 - Categoria");
+      printf("3 - Prioridade");
+      printf("4 - Estado");
+      printf("0 - Voltar");
+      int opcao2;
+      scanf("%d", &opcao2);
+      if(opcao2 == 1){
+        system ("clear");
+        printf("Descrição: ");
+        char descricao[300];
+        scanf("%s", descricao);
+        strcpy(lt->tarefas[posicao-1].descricao, descricao);
+        printf("Descrição alterada com sucesso!");
+        return 0; 
+    } else if(opcao2 == 2){
+        system ("clear");
+        printf("Categoria: ");
+        char categoria[100];
+        scanf("%s", categoria);
+        strcpy(lt->tarefas[posicao-1].categoria, categoria);
+    } else if(opcao2 == 3){
+        system ("clear");
+        printf("Prioridade: ");
+        int prioridade;
+        scanf("%d", &prioridade);
+        lt->tarefas[posicao-1].prioridade = prioridade;
+    
+    } else if(opcao2 == 4){
+        system ("clear");
+        printf("Escolha o novo estado da tarefa:\n");    
+        printf("1 - Completo\n");  
+        printf("2 - Em andamento\n");
+        printf("3 - Não iniciado\n");
+        int estado;
+        scanf("%d", &estado);
+        lt->tarefas[posicao-1].estado = estado;
+      } else if(opcao2 == 0){
+        system ("clear");
+        return 0;
+      } else {
+        system ("clear");
+        printf("Opção inválida!");
+        return 0;
+      }
+    }
+        return 0;
+}
+
+
 int listarPrioridade(ListaDeTarefas lt){
+  printf("Listar Tarefas por Prioridade");
+  printf("Digite a prioridade (de 1 a 10): ");
+  int prioridade;
+  scanf("%d", &prioridade);
+  if(prioridade > 10 || prioridade < 1){
+    printf("Prioridade inválida!");
+    return 0;
+  } else {
+    system("clear");
+    printf("Tarefas com prioridade %d:\n", prioridade);
+     for (int i = 0; i < lt.qtd; i++) {
+       if(lt.tarefas[i].prioridade == prioridade){
+         printf("Tarefa %d\n", i + 1);
+         printf("Categoria: %s", lt.tarefas[i].categoria);
+         printf("Descrição: %s", lt.tarefas[i].descricao);
+         printf("Estado: %d\n", lt.tarefas[i].estado);
+  }
+     }
+  }
+  
   return 0;
 }
 
@@ -183,9 +269,7 @@ int salvarLista(ListaDeTarefas lt, char nome[]) {
         return 1;
     }
 
-    for (int i = 0; i < lt.qtd; i++) {
-        fwrite(&lt.tarefas[i], sizeof(Tarefa), 1, arquivo);
-    }
+        fwrite(&lt.tarefas, sizeof(Tarefa), lt.qtd, arquivo);
 
     fclose(arquivo);
     return 0;
