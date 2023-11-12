@@ -3,7 +3,9 @@
 typedef struct {
     int prioridade;
     int estado;
-    char categoria[100];
+    // char categoria[100]; 
+    // Problemas com a listagem de categoria
+    int categoria;
     char descricao[300];
 } Tarefa;
 
@@ -12,7 +14,10 @@ typedef struct {
     int qtd;
 } ListaDeTarefas;
 
+void clearBuffer();
+
 char* estado(int e);
+char* categoria(int c);
 
 //Funções principais
 int criarTarefa(ListaDeTarefas *lt);
@@ -40,4 +45,3 @@ void printMenu();
 int salvarLista(ListaDeTarefas lt, char nome[]);
 // fread
 int carregarLista(ListaDeTarefas *lt, char nome[]);
-
