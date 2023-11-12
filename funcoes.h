@@ -1,23 +1,25 @@
 #include <stdio.h>
 
-typedef struct {
+typedef struct
+{
     int prioridade;
     int estado;
-    // char categoria[100]; 
+    // char categoria[100];
     // Problemas com a listagem de categoria
     int categoria;
     char descricao[300];
 } Tarefa;
 
-typedef struct {
+typedef struct
+{
     Tarefa tarefas[100];
     int qtd;
 } ListaDeTarefas;
 
 void clearBuffer();
 
-char* estado(int e);
-char* categoria(int c);
+char *estado(int e);
+char *categoria(int c);
 
 //Funções principais
 int criarTarefa(ListaDeTarefas *lt);
@@ -25,7 +27,7 @@ int deletarTarefa(ListaDeTarefas *lt);
 int alterarTarefa(ListaDeTarefas *lt);
 
 // Funções para exportar
-int exportarTarefas(ListaDeTarefas lt,     char exportado[]); // Adicional, não feito.
+int exportarTarefas(ListaDeTarefas lt, char exportado[]); // Adicional, não feito.
 int exportarPrioridade(ListaDeTarefas lt, char exportado[]);
 int exportarCategoria(ListaDeTarefas lt, char exportado[]);
 int exportarPCTarefa(ListaDeTarefas lt, char exportado[]);
@@ -36,7 +38,6 @@ int listarPrioridade(ListaDeTarefas lt);
 int listarCategoria(ListaDeTarefas lt);
 int listarPCTarefa(ListaDeTarefas lt);
 int listarEstado(ListaDeTarefas lt);
-
 
 void menuExportar();
 void menuListagem();
