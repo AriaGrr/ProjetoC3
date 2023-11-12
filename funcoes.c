@@ -169,10 +169,19 @@ int alterarTarefa(ListaDeTarefas *lt)
   printf("0 - Voltar\n");
   int opcao;
   scanf("%d", &opcao);
-  if (opcao == 1)
+  if (opcao == 0)
+  {
+    return 0;
+  }
+  else if (opcao == 1)
   {
     system("clear");
     listarTarefas(*lt);
+  }
+  else if (opcao != 2)
+  {
+    printf("Opção invalida\n");
+    return 0;
   }
   printf("Qual tarefa você deseja alterar?");
   int posicao;
