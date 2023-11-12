@@ -33,8 +33,10 @@ int main(){
             deletarTarefa(&lt);
             system("clear");
         } else if (opcao == 3){
+
             system("clear");
-            void menuListagem();
+        
+            menuListagem();
             int opcao2;
             scanf("%d", &opcao2);
             system("clear");
@@ -44,22 +46,20 @@ int main(){
               listarPrioridade(lt);
             } else if (opcao2 == 3){
               listarCategoria(lt);
-            } else if (opcao == 4){
+            } else if (opcao2 == 4){
               listarEstado(lt);
-            } else if (opcao == 5){
+            } else if (opcao2 == 5){
               listarPCTarefa(lt);
             } else {
               printf("Opção não existe!\n");
             }
-
             printf("Pressione Enter para voltar ao menu...");
-            getchar(); // Captura o Enter
-            getchar(); // Aguarda o próximo Enter
-
+            clearBuffer();
+            clearBuffer();
             system("clear"); 
           } else if (opcao == 4){
             system("clear");
-            void menuExportar();
+            menuExportar();
             int opcao3;
             scanf("%d", &opcao3);
             system("clear");
