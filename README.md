@@ -1,5 +1,5 @@
 # ProjetoC3
-Projeto 3 de Desenvolvimento Web.
+Projeto 3.
 
 # Requisitos
 Continuando o projeto 1, vamos adicionar algumas funções para melhorar o uso da lista de tarefas, sendo que uma delas é a modificação dos dados da tarefa permitindo armazenar o estado dela que pode ser:
